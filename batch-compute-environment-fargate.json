@@ -1,0 +1,16 @@
+{
+  "computeEnvironmentName": "TEST-nextflow-batch-compute",
+  "type": "MANAGED",
+  "state": "ENABLED",
+  "computeResources": {
+    "type": "FARGATE_SPOT",
+    "maxvCpus": 16,
+    "subnets": [
+      "SUBNET_IDS"
+    ],
+    "securityGroupIds": [
+      "SECURITY_GROUP_IDS"
+    ],
+    "serviceRole": "AWS_BATCH_SERVICE_ROLE_ARN"
+  }
+}
