@@ -1,0 +1,28 @@
+*** This file must be modified for use ***
+{
+  "computeEnvironmentName": "TEST-nextflow-batch-compute",
+  "type": "MANAGED",
+  "state": "ENABLED",
+  "computeResources": {
+    "type": "SPOT",
+    "minvCpus": 0,
+    "maxvCpus": 16,
+    "desiredvCpus": 0,
+    "instanceTypes": [
+      "m4"
+    ],
+    "subnets": [
+      "SUBNET_IDS"
+    ],
+    "securityGroupIds": [
+      "SECURITY_GROUP_IDS"
+    ],
+    "instanceRole": "nextflowEcsInstanceRole",
+    "tags": {
+      "owner": "OWNER-EMAIL"
+    },
+    "bidPercentage": 90,
+    "spotIamFleetRole": "ecsSpotFleetRole"
+  },
+  "serviceRole": "AWS_BATCH_SERVICE_ROLE_ARN"
+}
