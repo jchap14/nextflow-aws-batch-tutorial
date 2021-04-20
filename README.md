@@ -61,11 +61,23 @@ If you don't already have a location create a new bucket:
     aws s3 mb s3://BUCKET_NAME
 
 
+## Nextflow task container
+
+Nextflow on AWS Batch requires the AWS CLI to be present either in the Docker image used for executing tasks, or in the Docker Host AMI. The latter is recommended so you can use unmodified task images for executing tasks, but for now build an image that includes the AWS CLI:
+
+    docker build -t <docker-hub-username>/nextflow-test:latest ./docker-image
+    docker push <docker-hub-username>/nextflow-test:latest
+
+Edit the `container` lines in [`tutorial.nf`](./`tutorial.nf`) to `<docker-hub-username>/nextflow-test:latest`.
+
+
 ## Running
 
     nextflow run tutorial.nf -bucket-dir s3://BUCKET_NAME/some/path
 
 Note if you are using temporary AWS session credentials then [setting them with environment variables (`AWS_ACCESS_KEY_ID` `AWS_SECRET_ACCESS_KEY` `AWS_SESSION_TOKEN`) does not work](https://github.com/nextflow-io/nextflow/issues/1724). Instead you should add the temporary credentials to your `~/.aws/credentials` file and set `AWS_PROFILE=<profile-name>`.
+
+You can optionally [enable tracing](https://www.nextflow.io/docs/latest/tracing.html) by adding flags `-with-report out.html` and/or `-with-trace`.
 
 
 ## Fetching results
@@ -84,8 +96,8 @@ Delete the compute environment
 
     aws batch update-job-queue --job-queue TEST-nextflow-batch-queue --state DISABLED
     aws delete-job-queue --job-queue TEST-nextflow-batch-queue
-    aws batch update-compute-environment --compute-environment TEST-nextflow-batch-compute --state DISABLED
-    aws batch delete-compute-environment --compute-environment TEST-nextflow-batch-compute
+    aws batch update-compute-environment --compute-environment TEST-nextflow-batch-compute-m4 --state DISABLED
+    aws batch delete-compute-environment --compute-environment TEST-nextflow-batch-compute-m4
 
 
 ## Additional options
