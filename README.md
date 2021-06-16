@@ -103,3 +103,4 @@ Delete the compute environment
 ## Additional options
 - Specify a launch template in the compute environment to custommise an AMI at launch time without rebuilding
 https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html
+- You can set a container or AWS job definition in `nextflow.config` instead of in the nextflow file.
