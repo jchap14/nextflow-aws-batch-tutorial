@@ -4,7 +4,7 @@ params.str = 'Hello world!'
 
 process splitLetters {
 
-    container 'manics/nextflow-test:latest'
+    container 'jchap14/nextflow-test:latest'
 
     output:
     file 'chunk_*' into letters
@@ -17,7 +17,7 @@ process splitLetters {
 
 process convertToUpperX {
 
-    container 'manics/nextflow-test:latest'
+    container 'jchap14/nextflow-test:latest'
 
     input:
     file x from letters.flatten()
