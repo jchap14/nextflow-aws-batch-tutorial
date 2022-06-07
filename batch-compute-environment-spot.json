@@ -1,28 +1,29 @@
-*** This file must be modified for use ***
 {
-  "computeEnvironmentName": "TEST-nextflow-batch-compute",
-  "type": "MANAGED",
-  "state": "ENABLED",
-  "computeResources": {
-    "type": "SPOT",
-    "minvCpus": 0,
-    "maxvCpus": 16,
-    "desiredvCpus": 0,
-    "instanceTypes": [
-      "m4"
-    ],
-    "subnets": [
-      "SUBNET_IDS"
-    ],
-    "securityGroupIds": [
-      "SECURITY_GROUP_IDS"
-    ],
-    "instanceRole": "nextflowEcsInstanceRole",
-    "tags": {
-      "owner": "OWNER-EMAIL"
+    "computeEnvironmentName": "TEST-nextflow-batch-compute",
+    "type": "MANAGED",
+    "state": "ENABLED",
+    "computeResources": {
+        "type": "SPOT",
+        "minvCpus": 0,
+        "maxvCpus": 16,
+        "desiredvCpus": 0,
+        "instanceTypes": [
+            "m4"
+        ],
+        "subnets": [
+            "subnet-0108c87c",
+            "subnet-3b9cb477",
+            "subnet-fc911b97"
+        ],
+        "securityGroupIds": [
+            "sg-d462e59f"
+        ],
+        "instanceRole": "nextflowEcsInstanceRole",
+        "tags": {
+            "owner": "jchap.aws@gmail.com"
+        },
+        "bidPercentage": 90,
+        "spotIamFleetRole": "AmazonEC2SpotFleetTaggingRole"
     },
-    "bidPercentage": 90,
-    "spotIamFleetRole": "ecsSpotFleetRole"
-  },
-  "serviceRole": "AWS_BATCH_SERVICE_ROLE_ARN"
+    "serviceRole": "arn:aws:iam::273915786479:role/aws-service-role/batch.amazonaws.com/AWSServiceRoleForBatch"
 }
